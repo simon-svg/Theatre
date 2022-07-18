@@ -11,6 +11,7 @@ const Logo = () => {
         <div className={styles.logo__cont}>
             <a className={styles.logo__link} href="#">
                 <img src={logo} alt="theatre"/>
+                <span>Theatre API</span>
             </a>
         </div>
     )

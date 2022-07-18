@@ -4,10 +4,10 @@ import { Link, Head } from '@inertiajs/inertia-react';
 // Commons
 import Header from '../Components/Commons/Header';
 
-export default function Welcome(props) {
+export default function App(props) {
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="App" />
             <Header />
             {/*<div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">*/}
             {/*    <div className="fixed top-0 right-0 px-6 py-4 sm:block">*/}

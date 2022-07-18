@@ -1,0 +1,24 @@
+@import "/resources/css/variables";
+
+.user__cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+}
+.user__cont_head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user__name {
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 5px;
+}
+.arrow__down {
+    transition: transform ease .3s;
+}

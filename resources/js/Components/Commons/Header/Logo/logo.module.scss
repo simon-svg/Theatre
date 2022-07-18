@@ -1,10 +1,19 @@
 @import "resources/css/variables";
 
-.logo__cont {
-    width: 70px;
-}
 .logo__link {
-    .img {
-        width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        width: 70px;
+    }
+
+    span {
+        word-break: keep-all;
+        margin-left: 10px;
+        color: $white;
+        font-weight: bold;
+        font-size: 25px;
     }
 }

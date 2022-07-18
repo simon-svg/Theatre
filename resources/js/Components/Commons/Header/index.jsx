@@ -6,6 +6,7 @@ import styles from './header.module.scss';
 // Components
 import Wrapper from '../Wrapper'
 import Logo from './Logo';
+import User from './User';
 
 const Header = () => {
     return (
@@ -13,6 +14,7 @@ const Header = () => {
             <Wrapper>
                 <div className={styles.header__cont}>
                     <Logo/>
+                    <User />
                 </div>
             </Wrapper>
         </header>
