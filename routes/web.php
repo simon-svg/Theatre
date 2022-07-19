@@ -4,6 +4,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Controllers
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TheatreController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,17 +19,23 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('App', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [PagesController::class, 'login'])->name('login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('/', [PagesController::class, 'home'])->name('home');
+
+
+    // admin Panel
+    Route::middleware(['isAdmin'])->group(function() {
+        Route::group(['as' => 'admin.'], function() {
+            Route::resource('/admin/theatre', TheatreController::class);
+        });
+    });
+});
+
+
+
 
 require __DIR__.'/auth.php';

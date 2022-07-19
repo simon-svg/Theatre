@@ -1,0 +1,23 @@
+@import "/resources/css/variables";
+
+.footer {
+    width: 100%;
+    height: 60px;
+    background-color: $mainBlue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.footer__cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo__cont {
+    width: 40px;
+}
+.footer__rights {
+    color: $white;
+}

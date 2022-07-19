@@ -7,6 +7,9 @@ import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
+// Styles
+import styles from './auth.module.scss';
+
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -32,7 +35,7 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <Guest>
-            <Head title="Log in" />
+            {/*<Head title="Log in" />*/}
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
@@ -40,7 +43,7 @@ export default function Login({ status, canResetPassword }) {
 
             <form onSubmit={submit}>
                 <div>
-                    <Label forInput="email" value="Email" />
+                    <Label className={styles.form__label} forInput="email" value="Email" />
 
                     <Input
                         type="text"
@@ -54,7 +57,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="password" value="Password" />
+                    <Label className={styles.form__label} forInput="password" value="Password" />
 
                     <Input
                         type="password"
@@ -70,19 +73,12 @@ export default function Login({ status, canResetPassword }) {
                     <label className="flex items-center">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
 
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span className={`${styles.form__label} ml-2 text-sm text-gray-600`}>Remember me</span>
                     </label>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
+                    <Link className={styles.register} href={route('register')}>Register</Link>
 
                     <Button className="ml-4" processing={processing}>
                         Log in

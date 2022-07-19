@@ -1,0 +1,58 @@
+@import "../../../../../../../css/variables";
+
+.theatre__head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.theatre__title {
+    color: $mainBlue;
+    font-size: 25px;
+    font-weight: bold;
+}
+.create__button {
+    background-color: $mainBlue;
+    padding: $buttonPadding;
+    border-radius: $buttonBorderRadius;
+    color: $white;
+}
+
+// table
+.theatre__table {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    border: 1px solid $mainBlue;
+}
+th, td {
+    border: 1px solid $mainBlue;
+    padding: 5px;
+    text-align: start;
+    vertical-align: middle;
+}
+.table__item {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 40px;
+        margin-right: 10px;
+    }
+
+    span {
+        color: $mainBlue;
+        font-weight: bold;
+    }
+}
+.table__btn {
+    background-color: $mainBlue;
+    padding: $buttonPadding;
+    border-radius: $buttonBorderRadius;
+    color: $white;
+
+    &.delete {
+        background-color: $activeColor;
+        margin-left: 5px;
+    }
+}
