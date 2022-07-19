@@ -9,7 +9,6 @@ import Wrapper from '../Wrapper';
 import logo from "../../../../../assets/images/logo.png";
 
 const Footer = () => {
-    console.log('grd')
     return (
         <footer className={styles.footer}>
             <Wrapper>
