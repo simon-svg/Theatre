@@ -1,0 +1,21 @@
+@import "../../../../../../../css/variables";
+
+.nav {
+    border-bottom: 1px solid $mainBlue;
+}
+.nav__list {
+    display: flex;
+}
+.nav__item {
+    margin-left: 20px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+.nav__link {
+    color: $mainBlue;
+    font-size: 25px;
+    font-weight: bold;
+
+}

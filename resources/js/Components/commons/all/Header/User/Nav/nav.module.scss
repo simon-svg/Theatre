@@ -1,7 +1,18 @@
+@import "/resources/css/variables";
+
 .user__nav {
+    width: 100%;
     position: absolute;
     top: 20px;
     overflow: hidden;
+    background-color: $mainBlue;
+    border-radius: 10px;
+    height: 0;
+
+    &.opend{
+        height: max-content;
+        padding: 30px 0 10px;
+    }
 }
 .user__nav_link {
     color: white;

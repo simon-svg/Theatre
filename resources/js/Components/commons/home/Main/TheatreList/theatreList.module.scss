@@ -1,0 +1,8 @@
+@import "resources/css/variables";
+
+.theatre__list {
+    width: calc(100% + 10px);
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+}

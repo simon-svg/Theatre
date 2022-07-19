@@ -1,0 +1,14 @@
+@import "/resources/css/variables";
+
+.logo {
+    width: 80px;
+    display: block;
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+.form {
+    background-color: $mainBlue;
+}
