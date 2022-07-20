@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
+// Models
+use App\Models\Theatre;
+
 class PagesController extends Controller
 {
     /**
@@ -21,8 +24,10 @@ class PagesController extends Controller
      */
     public function home()
     {
+        $theatres = Theatre::all();
         return Inertia::render('Home', [
             'user' => Auth::user(),
+            'theatres' => $theatres,
         ]);
     }
 }

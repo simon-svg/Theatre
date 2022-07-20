@@ -1,25 +1,21 @@
 import React from 'react';
 
 // Styles
-import styles from './main.module.scss';
+import styles from './edit.module.scss';
 import Wrapper from "../../../all/Wrapper";
 
 // Components
-import TheatreTable from './TheatreTable';
 import Nav from "../../all/Nav";
-import {usePage} from "@inertiajs/inertia-react";
+import EditForm from "./EditForm";
 
-const Main = () => {
-    const {message} = usePage().props;
-
+const Edit = () => {
     return (
         <main>
             <section className={styles.home__section}>
                 <Wrapper>
                     <div className={styles.home__cont}>
                         <Nav />
-                        <TheatreTable />
-                        {message}
+                        <EditForm />
                     </div>
                 </Wrapper>
             </section>
@@ -27,4 +23,4 @@ const Main = () => {
     )
 }
 
-export default Main;
+export default Edit;

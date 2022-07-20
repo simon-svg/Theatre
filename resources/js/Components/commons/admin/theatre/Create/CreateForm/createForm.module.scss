@@ -1,0 +1,46 @@
+@import "resources/css/variables";
+
+.form__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.form {
+    width: 400px;
+}
+.form__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    label {
+        color: $mainBlue;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        border: 1px solid $mainBlue;
+        margin-top: 5px;
+        padding: 5px;
+        border-radius: $buttonBorderRadius;
+        outline: none;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $mainBlue;
+        }
+    }
+}
+.form__btn {
+    background-color: $mainBlue;
+    color: $white;
+    padding: $buttonPadding;
+    border-radius: $buttonBorderRadius;
+    margin-top: 5px;
+}
+.error {
+    color: $activeColor;
+    margin-top: 3px;
+}

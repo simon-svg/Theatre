@@ -5,7 +5,8 @@ import styles from './create.module.scss';
 import Wrapper from "../../../all/Wrapper";
 
 // Components
-import Nav from "../all/Nav";
+import Nav from "../../all/Nav";
+import CreateForm from "./CreateForm";
 
 const Create = () => {
     return (
@@ -14,7 +15,7 @@ const Create = () => {
                 <Wrapper>
                     <div className={styles.home__cont}>
                         <Nav />
-                        here will be create functionality
+                        <CreateForm />
                     </div>
                 </Wrapper>
             </section>

@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Controllers
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TheatreController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +24,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/', [PagesController::class, 'home'])->name('home');
+    Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 
 
     // admin Panel
