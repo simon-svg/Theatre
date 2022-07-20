@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Theatre;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+
+// Requests
+use App\Http\Requests\Theatre\CreateRequest;
+use App\Http\Requests\Theatre\UpdateRequest;
 
 class TheatreController extends Controller
 {
@@ -16,8 +23,10 @@ class TheatreController extends Controller
      */
     public function index()
     {
+        $theatres = Theatre::all();
         return Inertia::render('admin/theatre/Index', [
             'user' => Auth::user(),
+            'theatres' => $theatres,
         ]);
     }
 
@@ -36,19 +45,28 @@ class TheatreController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        //
+        $img = $request->file('image')->store('theatres');
+        $theatre = Theatre::create([
+            'name' => $request->name,
+            'date' => $request->date,
+            'image' => $img,
+        ]);
+        if ($theatre) {
+            return redirect()->route('admin.theatre.index', ['message' => 'Theatre has been added successfully']);
+        }
+        return redirect()->route('admin.theatre.index', ['message' => 'something went wrong']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Theatre  $theatre
-     * @return \Illuminate\Http\Response
+     * @param Theatre $theatre
+     * @return Response
      */
     public function show(Theatre $theatre)
     {
@@ -58,34 +76,55 @@ class TheatreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Theatre  $theatre
-     * @return \Illuminate\Http\Response
+     * @param Theatre $theatre
+     * @return \Inertia\Response
      */
     public function edit(Theatre $theatre)
     {
-        //
+        return Inertia::render('admin/theatre/Edit', [
+            'user' => Auth::user(),
+            'theatre' => $theatre,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Theatre  $theatre
-     * @return \Illuminate\Http\Response
+     * @param UpdateRequest $request
+     * @param Theatre $theatre
+     * @return RedirectResponse
      */
-    public function update(Request $request, Theatre $theatre)
+    public function update(UpdateRequest $request, Theatre $theatre)
     {
-        //
+        $img = $request->imageHidden;
+        if($request->file('image')){
+            Storage::delete($request->imageHidden);
+            $img = $request->file('image')->store('theatres');
+        }
+        $updatedTheatre = $theatre->update([
+            'name' => $request->name,
+            'date' => $request->date,
+            'image' => $img,
+        ]);
+        if ($updatedTheatre) {
+            Session::flash('message', 'Theatre has been edited successfully!');
+            return redirect()->route('admin.theatre.index', ['message' => 'Theatre has been edited successfully']);
+        }
+        Session::flash('message', 'Something went wrong');
+        return redirect()->route('admin.theatre.index', ['message' => 'something went wrong']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Theatre  $theatre
-     * @return \Illuminate\Http\Response
+     * @param Theatre $theatre
+     * @return RedirectResponse
      */
     public function destroy(Theatre $theatre)
     {
-        //
+        if ($theatre->delete()) {
+            return redirect()->route('admin.theatre.index', ['message' => 'Theatre has been deleted successfully']);
+        }
+        return redirect()->route('admin.theatre.index', ['message' => 'something went wrong']);
     }
 }

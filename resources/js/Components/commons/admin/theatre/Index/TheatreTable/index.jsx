@@ -1,10 +1,13 @@
 import React from 'react';
-import {Link} from "@inertiajs/inertia-react";
+import {Link, usePage} from "@inertiajs/inertia-react";
+import {getData} from '../../../../../../utils/index';
 
 // Styles
 import styles from './theatreTable.module.scss';
 
 const TheatreTable = () => {
+    const { theatres } = usePage().props
+
     return (
         <>
             <div className={styles.theatre__head}>
@@ -20,25 +23,31 @@ const TheatreTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <div className={styles.table__item}>
-                                <img src="https://pbs.twimg.com/profile_images/1483493069752258566/Ft0W9FvR_400x400.jpg" alt=""/>
-                                <span>Theatre 1</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div className={styles.table__item}>
-                                <span>Theatre 1</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div className={styles.table__item}>
-                                <button className={styles.table__btn}>edit</button>
-                                <button className={`${styles.table__btn} ${styles.delete}`}>delete</button>
-                            </div>
-                        </td>
-                    </tr>
+                    {
+                        theatres.map((item) => {
+                            return (
+                                <tr key={item.id}>
+                                    <td>
+                                        <div className={styles.table__item}>
+                                            <img src={`/storage/${item.image}`} alt={item.name}/>
+                                            <span>{item.name}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className={styles.table__item}>
+                                            <span>{getData(item.date)}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className={styles.table__item}>
+                                            <Link className={styles.table__btn} href={route('admin.theatre.edit', item.id)} as="a">edit</Link>
+                                            <Link className={`${styles.table__btn} ${styles.delete}`} href={route('admin.theatre.destroy', item.id)} method="delete" as="button">delete</Link>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </table>
         </>

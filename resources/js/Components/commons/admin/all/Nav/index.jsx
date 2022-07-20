@@ -12,7 +12,7 @@ const Nav = () => {
                     <Link className={styles.nav__link} href={route('admin.theatre.index')}>Theatres</Link>
                 </li>
                 <li className={styles.nav__item}>
-                    <Link className={styles.nav__link} href="@/Components/commons/admin/theatre/Main/Nav/index#">Bookings</Link>
+                    <Link className={styles.nav__link} href="#">Bookings</Link>
                 </li>
             </ul>
         </nav>

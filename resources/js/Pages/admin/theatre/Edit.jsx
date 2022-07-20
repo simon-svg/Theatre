@@ -1,8 +1,8 @@
 import React from 'react';
-import Main from "../../../Components/commons/admin/theatre/Create";
+import Main from "../../../Components/commons/admin/theatre/Edit";
 import Page from "@/Layouts/Page";
 
-const Create = () => {
+const Edit = () => {
     return (
         <Page>
             <Main />
@@ -10,4 +10,4 @@ const Create = () => {
     );
 }
 
-export default Create;
+export default Edit;
