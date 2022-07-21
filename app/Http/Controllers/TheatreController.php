@@ -59,7 +59,7 @@ class TheatreController extends Controller
         if ($theatre) {
             return redirect()->route('admin.theatre.index', ['message' => 'Theatre has been added successfully']);
         }
-        return redirect()->route('admin.theatre.index', ['message' => 'something went wrong']);
+        return redirect()->route('admin.theatre.index', ['message' => 'Something went wrong']);
     }
 
     /**
@@ -107,11 +107,9 @@ class TheatreController extends Controller
             'image' => $img,
         ]);
         if ($updatedTheatre) {
-            Session::flash('message', 'Theatre has been edited successfully!');
             return redirect()->route('admin.theatre.index', ['message' => 'Theatre has been edited successfully']);
         }
-        Session::flash('message', 'Something went wrong');
-        return redirect()->route('admin.theatre.index', ['message' => 'something went wrong']);
+        return redirect()->route('admin.theatre.index', ['message' => 'Something went wrong']);
     }
 
     /**
@@ -122,9 +120,10 @@ class TheatreController extends Controller
      */
     public function destroy(Theatre $theatre)
     {
-        if ($theatre->delete()) {
+        if ($theatre->forceDelete()) {
+            Storage::delete($theatre->image);
             return redirect()->route('admin.theatre.index', ['message' => 'Theatre has been deleted successfully']);
         }
-        return redirect()->route('admin.theatre.index', ['message' => 'something went wrong']);
+        return redirect()->route('admin.theatre.index', ['message' => 'Something went wrong']);
     }
 }

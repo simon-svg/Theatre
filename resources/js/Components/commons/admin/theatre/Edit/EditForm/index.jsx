@@ -7,7 +7,8 @@ import styles from './editForm.module.scss';
 const EditForm = () => {
     const {theatre} = usePage().props
 
-    const {data, setData, put, errors} = useForm({
+    const {data, setData, post, errors} = useForm({
+        _method: 'put',
         name: theatre.name,
         date: theatre.date,
         image: null,
@@ -16,7 +17,7 @@ const EditForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        put(route('admin.theatre.update', theatre.id));
+        post(route('admin.theatre.update', theatre.id));
     }
 
     return (

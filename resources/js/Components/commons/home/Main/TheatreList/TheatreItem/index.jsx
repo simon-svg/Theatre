@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 import {Link, usePage} from "@inertiajs/inertia-react";
 import {getData} from '../../../../../../utils/index';
 
@@ -8,10 +8,13 @@ import styles from './theatre.module.scss';
 const TheatreItem = ({item}) => {
     const {user} = usePage().props;
 
-    const [data, setData] = useState({
-        user_id: user.id,
-        theatre_id: item.id,
-    })
+    const requestData = useMemo(() => {
+        return {
+            user_id: user.id,
+            theatre_id: item.id,
+            booked_id: item.booked_id,
+        };
+    }, [user.id, item.id, item.booked_id]);
 
     return (
         <li className={styles.theatre__item}>
@@ -24,10 +27,10 @@ const TheatreItem = ({item}) => {
                     <h3 className={styles.theatre__date}>{getData(item.date)}</h3>
                 </div>
                 <div className={styles.theatre__book}>
-                    <Link className={`${styles.theatre__book_btn} styles.active`}
+                    <Link className={`${styles.theatre__book_btn} ${item.booked_id ? styles.active : ''}`}
                           href={route('booking.store')}
                           method="post"
-                          data={data}
+                          data={requestData}
                           as="button">Book</Link>
                 </div>
             </div>

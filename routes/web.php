@@ -24,13 +24,19 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/', [PagesController::class, 'home'])->name('home');
+
+    // booking
     Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+    Route::post('/booking/submit', [BookingController::class, 'submit'])->name('booking.submit');
 
 
     // admin Panel
     Route::middleware(['isAdmin'])->group(function() {
         Route::group(['as' => 'admin.'], function() {
             Route::resource('/admin/theatre', TheatreController::class);
+
+            Route::get('/booking/index', [BookingController::class, 'index'])->name('booking.index');
+            Route::get('/booking/clear-all', [BookingController::class, 'clearAll'])->name('booking.clear.all');
         });
     });
 });

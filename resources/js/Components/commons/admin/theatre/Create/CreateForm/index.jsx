@@ -5,7 +5,7 @@ import {useForm} from "@inertiajs/inertia-react";
 import styles from './createForm.module.scss';
 
 const CreateForm = () => {
-    const { data, setData, post, progress, errors, reset} = useForm({
+    const { data, setData, post, errors} = useForm({
         name: null,
         date: null,
         image: null,

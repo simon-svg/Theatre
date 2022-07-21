@@ -24,10 +24,15 @@ class PagesController extends Controller
      */
     public function home()
     {
-        $theatres = Theatre::all();
         return Inertia::render('Home', [
             'user' => Auth::user(),
-            'theatres' => $theatres,
+            'theatres' => Theatre::orderBy('theatres.id', 'desc')
+                ->leftJoin('bookings', function ($join) {
+                    $join->on('theatres.id', '=', 'bookings.theatre_id')
+                        ->where('bookings.user_id', Auth::user()->id);
+                })
+                ->select('theatres.*', 'bookings.id as booked_id')
+                ->get()
         ]);
     }
 }

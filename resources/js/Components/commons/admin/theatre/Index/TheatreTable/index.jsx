@@ -17,9 +17,9 @@ const TheatreTable = () => {
             <table className={styles.theatre__table}>
                 <thead>
                     <tr>
-                        <th>name</th>
-                        <th>date</th>
-                        <th width="10%">panel</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th width="10%">Panel</th>
                     </tr>
                 </thead>
                 <tbody>
