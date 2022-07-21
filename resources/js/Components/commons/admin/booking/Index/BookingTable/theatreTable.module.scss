@@ -1,0 +1,25 @@
+@import "../../../../../../../css/variables";
+
+.theatre__head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.theatre__title {
+    color: $mainBlue;
+    font-size: 25px;
+    font-weight: bold;
+}
+.clear__button {
+    background-color: $mainBlue;
+    padding: $buttonPadding;
+    border-radius: $buttonBorderRadius;
+    color: $white;
+}
+.theatre__table {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    border: 1px solid $mainBlue;
+}

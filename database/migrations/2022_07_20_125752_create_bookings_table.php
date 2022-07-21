@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('theatre_id');
             $table->bigInteger('user_id');
-            $table->softDeletes();
+            $table->boolean('booked')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

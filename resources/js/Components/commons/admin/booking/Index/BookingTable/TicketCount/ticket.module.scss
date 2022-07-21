@@ -1,0 +1,19 @@
+@import "resources/css/variables";
+
+.ticket__count {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-top: 20px;
+
+    p {
+        color: $mainBlue;
+        font-weight: bold;
+        font-size: 20px;
+
+        span {
+            color: $activeColor;
+        }
+    }
+}

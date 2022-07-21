@@ -1,0 +1,37 @@
+@import "resources/css/variables";
+
+th, td {
+    border: 1px solid $mainBlue;
+    padding: 5px;
+    text-align: start;
+    vertical-align: middle;
+}
+.table__item {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 40px;
+        margin-right: 10px;
+    }
+
+    span {
+        color: $mainBlue;
+        font-weight: bold;
+    }
+}
+.table__btn {
+    background-color: $mainBlue;
+    padding: $buttonPadding;
+    border-radius: $buttonBorderRadius;
+    color: $white;
+
+    &.delete {
+        background-color: $activeColor;
+        margin-left: 5px;
+    }
+
+    &.submitted {
+        background-color: $activeColor;
+    }
+}

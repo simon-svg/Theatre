@@ -14,5 +14,6 @@ class Booking extends Model
     public $fillable = [
         'user_id',
         'theatre_id',
+        'booked',
     ];
 }
