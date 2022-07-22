@@ -27,7 +27,6 @@ Route::middleware(['auth', 'verified'])->group(function (){
 
     // booking
     Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
-    Route::post('/booking/submit', [BookingController::class, 'submit'])->name('booking.submit');
 
 
     // admin Panel
@@ -35,7 +34,8 @@ Route::middleware(['auth', 'verified'])->group(function (){
         Route::group(['as' => 'admin.'], function() {
             Route::resource('/admin/theatre', TheatreController::class);
 
-            Route::get('/booking/index', [BookingController::class, 'index'])->name('booking.index');
+            Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+            Route::post('/booking/submit', [BookingController::class, 'submit'])->name('booking.submit');
             Route::get('/booking/clear-all', [BookingController::class, 'clearAll'])->name('booking.clear.all');
         });
     });

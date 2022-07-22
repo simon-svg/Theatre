@@ -28,12 +28,12 @@ const BookingItem = ({item}) => {
                 <div className={styles.table__item}>
                     {item.booked ?
                         <Link className={`${styles.table__btn} ${styles.submitted}`}
-                              href={route('booking.submit')}
+                              href={route('admin.booking.submit')}
                               data={{id: item.booked_id, submitted: item.booked}}
                               method="post"
                               as="button">unsubmit</Link> :
                         <Link className={styles.table__btn}
-                              href={route('booking.submit')}
+                              href={route('admin.booking.submit')}
                               data={{id: item.booked_id, submitted: item.booked}}
                               method="post"
                               as="button">submit</Link>
